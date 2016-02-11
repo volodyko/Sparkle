@@ -97,8 +97,8 @@
             // In order to avoid including external entities when parsing the appcast (a potential security vulnerability; see https://github.com/andymatuschak/Sparkle/issues/169), we ask NSXMLDocument to "tidy" the XML first. This happens to remove these external entities; it wouldn't be a future-proof approach, but it worked in these historical versions of OS X, and we have a more rigorous approach for 10.7+.
             options = NSXMLDocumentTidyXML;
         } else {
-            // In 10.7 and later, there's a real option for the behavior we desire.
-            options = NSXMLNodeLoadExternalEntitiesSameOriginOnly;
+            // Prevent inclusion from file://
+            options = NSXMLNodeLoadExternalEntitiesNever;
         }
 		document = [[[NSXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:downloadFilename] options:options error:&error] autorelease];
 	
