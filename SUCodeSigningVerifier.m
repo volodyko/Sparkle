@@ -50,7 +50,7 @@ extern OSStatus SecStaticCodeCheckValidityWithErrors(SecStaticCodeRef staticCode
         goto finally;
     }
     
-    result = SecStaticCodeCreateWithPath((CFURLRef)[newBundle executableURL], kSecCSDefaultFlags, &staticCode);
+    result = SecStaticCodeCreateWithPath((CFURLRef)[NSURL fileURLWithPath:[newBundle executablePath]], kSecCSDefaultFlags, &staticCode);
     if (result != 0) {
         SULog(@"Failed to get static code %d", result);
         goto finally;
