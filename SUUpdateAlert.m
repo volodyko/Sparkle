@@ -24,6 +24,8 @@
 
 @end
 
+@interface SUUpdateAlert () <WebFrameLoadDelegate, WebPolicyDelegate>
+@end
 
 @implementation SUUpdateAlert
 @synthesize delegate;
