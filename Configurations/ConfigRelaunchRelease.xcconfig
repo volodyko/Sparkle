@@ -1,3 +1,5 @@
 #include "ConfigCommon.xcconfig"
 #include "ConfigCommonRelease.xcconfig"
 #include "ConfigRelaunch.xcconfig"
+
+GENERATE_MASTER_OBJECT_FILE = NO
