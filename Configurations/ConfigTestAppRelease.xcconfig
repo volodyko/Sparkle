@@ -2,4 +2,3 @@
 #include "ConfigCommonRelease.xcconfig"
 #include "ConfigTestApp.xcconfig"
 
-GENERATE_MASTER_OBJECT_FILE = NO
