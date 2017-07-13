@@ -12,6 +12,7 @@
 #import "SUHost.h"
 #import "SUConstants.h"
 #import "SULog.h"
+#import "SUGuidedPackageInstaller.h"
 
 
 @implementation SUInstaller
@@ -42,7 +43,8 @@ static NSString*	sUpdateFolder = nil;
 		return NO;	
 }
 
-+ (NSString *)installSourcePathInUpdateFolder:(NSString *)inUpdateFolder forHost:(SUHost *)host isPackage:(BOOL *)isPackagePtr
++ (NSString *)installSourcePathInUpdateFolder:(NSString *)inUpdateFolder forHost:(SUHost *)host isPackage:(BOOL *)isPackagePtr isGuided:(BOOL *)isGuidedPtr
+
 {
     // Search subdirectories for the application
 	NSString	*currentFile,
@@ -50,6 +52,7 @@ static NSString*	sUpdateFolder = nil;
     *bundleFileName = [[host bundlePath] lastPathComponent],
     *alternateBundleFileName = [[host name] stringByAppendingPathExtension:[[host bundlePath] pathExtension]];
 	BOOL isPackage = NO;
+    BOOL isGuided = YES;
 	NSString *fallbackPackagePath = nil;
 	NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: inUpdateFolder];
 	
@@ -105,22 +108,35 @@ static NSString*	sUpdateFolder = nil;
 		isPackage = YES;
 		newAppDownloadPath = fallbackPackagePath;
 	}
+    
+    if (isPackage) {
+        // Guided (or now "normal") installs used to be opt-in (i.e, Sparkle would detect foo.sparkle_guided.pkg or foo.sparkle_guided.mpkg),
+        // but to get an interactive (or "unguided") install, the developer now must opt-out of guided installations.
+        
+        // foo.app -> foo.sparkle_interactive.pkg or foo.sparkle_interactive.mpkg
+        if ([[[newAppDownloadPath stringByDeletingPathExtension] pathExtension] isEqualToString:@"sparkle_interactive"]) {
+            isGuided = NO;
+        }
+    }
 
+    
     if (isPackagePtr) *isPackagePtr = isPackage;
+    if (isGuidedPtr) *isGuidedPtr = isGuided;
     return newAppDownloadPath;
 }
 
 + (NSString *)appPathInUpdateFolder:(NSString *)updateFolder forHost:(SUHost *)host
 {
     BOOL isPackage = NO;
-    NSString *path = [self installSourcePathInUpdateFolder:updateFolder forHost:host isPackage:&isPackage];
+    NSString *path = [self installSourcePathInUpdateFolder:updateFolder forHost:host isPackage:&isPackage isGuided:nil];
     return isPackage ? nil : path;
 }
 
 + (void)installFromUpdateFolder:(NSString *)inUpdateFolder overHost:(SUHost *)host installationPath:(NSString *)installationPath delegate:delegate synchronously:(BOOL)synchronously versionComparator:(id <SUVersionComparison>)comparator
 {
     BOOL isPackage = NO;
-	NSString *newAppDownloadPath = [self installSourcePathInUpdateFolder:inUpdateFolder forHost:host isPackage:&isPackage];
+    BOOL isGuided = NO;
+	NSString *newAppDownloadPath = [self installSourcePathInUpdateFolder:inUpdateFolder forHost:host isPackage:&isPackage isGuided:&isGuided];
     
 	if (newAppDownloadPath == nil)
 	{
@@ -128,7 +144,21 @@ static NSString*	sUpdateFolder = nil;
 	}
 	else
 	{
-		[(isPackage ? [SUPackageInstaller class] : [SUPlainInstaller class]) performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+        if(isPackage && isGuided)
+        {
+            NSString *fileOperationToolPath = [[[[NSBundle mainBundle] executablePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@""SPARKLE_FILEOP_TOOL_NAME];
+
+            SUGuidedPackageInstaller *installer = [[SUGuidedPackageInstaller alloc] initWithPackagePath:newAppDownloadPath installationPath:installationPath fileOperationToolPath:fileOperationToolPath];
+            [installer performFinalInstallationProgressBlock:nil error:nil host:host delegate:delegate];
+        }
+        else if(isPackage && !isGuided)
+        {
+            [[SUPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+        }
+        else
+        {
+            [[SUPlainInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+        }
 	}
 }
 

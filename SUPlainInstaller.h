@@ -17,6 +17,10 @@
 #import "SUInstaller.h"
 #import "SUVersionComparisonProtocol.h"
 
+extern NSString *SUPackageInstallerInstallationPathKey;
+extern NSString *SUPackageInstallerDelegateKey;
+extern NSString *SUPackageInstallerHostKey;
+
 @class SUHost;
 
 @interface SUPlainInstaller : SUInstaller

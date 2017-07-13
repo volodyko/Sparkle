@@ -61,6 +61,15 @@ extern NSString *const SUFixedHTMLDisplaySizeKey;
 extern NSString *const SUKeepDownloadOnFailedInstallKey;
 extern NSString *const SUDefaultsDomainKey;
 
+extern char * const SUFileOpRemoveQuarantineCommand;
+extern char * const SUFileOpCopyCommand;
+extern char * const SUFileOpMoveCommand;
+extern char * const SUFileOpChangeOwnerAndGroupCommand;
+extern char * const SUFileOpUpdateModificationAndAccessTimeCommand;
+extern char * const SUFileOpMakeDirectoryCommand;
+extern char * const SUFileOpRemoveCommand;
+extern char * const SUFileOpInstallCommand;
+
 // -----------------------------------------------------------------------------
 //	Errors:
 // -----------------------------------------------------------------------------
@@ -87,5 +96,6 @@ extern OSStatus SUMissingInstallerToolError;
 extern OSStatus SURelaunchError;
 extern OSStatus SUInstallationError;
 extern OSStatus SUDowngradeError;
+extern OSStatus SUInstallationCancelledError;
 
 #endif
