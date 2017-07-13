@@ -143,7 +143,6 @@ static NSString*	sUpdateFolder = nil;
     }
     else
     {
-        isGuided = YES;
         if(isPackage && isGuided)
         {
             [[SUGuidedPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
