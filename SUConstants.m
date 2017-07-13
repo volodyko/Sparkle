@@ -55,3 +55,13 @@ OSStatus SUMissingInstallerToolError = 4003;
 OSStatus SURelaunchError = 4004;
 OSStatus SUInstallationError = 4005;
 OSStatus SUDowngradeError = 4006;
+OSStatus SUInstallationCancelledError = 4007;
+
+char * const SUFileOpRemoveQuarantineCommand = "xattr-d-apple-quarantine";
+char * const SUFileOpCopyCommand = "cp";
+char * const SUFileOpMoveCommand = "mv";
+char * const SUFileOpChangeOwnerAndGroupCommand = "chown";
+char * const SUFileOpUpdateModificationAndAccessTimeCommand = "touch";
+char * const SUFileOpMakeDirectoryCommand = "mkdir";
+char * const SUFileOpRemoveCommand = "rm";
+char * const SUFileOpInstallCommand = "installer";
