@@ -20,6 +20,7 @@
 extern NSString *SUPackageInstallerInstallationPathKey;
 extern NSString *SUPackageInstallerDelegateKey;
 extern NSString *SUPackageInstallerHostKey;
+extern NSString *SUPackageInstallerErrorKey;
 
 @class SUHost;
 

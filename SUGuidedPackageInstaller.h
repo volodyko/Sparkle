@@ -20,14 +20,12 @@ A guided installation can be started by applications other than the application 
 */
 
 #import <Foundation/Foundation.h>
-#import "SUInstallerProtocol.h"
 #import "SUPlainInstaller.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SUGuidedPackageInstaller : SUPlainInstaller <SUInstallerProtocol>
+@interface SUGuidedPackageInstaller : SUPlainInstaller
 
-- (instancetype)initWithPackagePath:(NSString *)packagePath installationPath:(NSString *)installationPath fileOperationToolPath:(NSString *)fileOperationToolPath;
 
 @end
 
