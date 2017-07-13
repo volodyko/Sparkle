@@ -15,6 +15,7 @@ NSString *SUPackageInstallerArgumentsKey = @"SUPackageInstallerArguments";
 NSString *SUPackageInstallerHostKey = @"SUPackageInstallerHost";
 NSString *SUPackageInstallerDelegateKey = @"SUPackageInstallerDelegate";
 NSString *SUPackageInstallerInstallationPathKey = @"SUPackageInstallerInstallationPathKey";
+NSString *SUPackageInstallerErrorKey = @"SUPackageInstallerInstallationPathKey";
 
 @implementation SUPackageInstaller
 
