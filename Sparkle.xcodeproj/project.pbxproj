@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
-		0D52BDB11F17968C009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		3772FEA913DE0B6B00F79537 /* SUVersionDisplayProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		525A2790133D6AE900FD8D70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
