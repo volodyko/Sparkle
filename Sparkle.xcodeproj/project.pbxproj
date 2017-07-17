@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
+		0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		3772FEA913DE0B6B00F79537 /* SUVersionDisplayProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		525A2790133D6AE900FD8D70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
 		525A27A0133D6B9700FD8D70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
@@ -1158,7 +1159,7 @@
 				61D85D6D0E10B2ED00F9B4A9 /* SUPipedUnarchiver.m in Sources */,
 				618FA5060DAE8AB80026945C /* SUPlainInstaller.m in Sources */,
 				61B5F8EF09C4CE3C00B25A18 /* SUPlainInstallerInternals.m in Sources */,
-				0D52BDB11F17968C009A9A05 /* SUGuidedPackageInstaller.m in Sources */,
+				0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */,
 				6101347C0DD2541A0049ACDF /* SUProbingUpdateDriver.m in Sources */,
 				61B93C0A0DD112FF00DCD2F8 /* SUScheduledUpdateDriver.m in Sources */,
 				61A225A50D1C4AC000430CCD /* SUStandardVersionComparator.m in Sources */,
