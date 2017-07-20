@@ -92,7 +92,7 @@
 
 - (NSString *)version
 {
-	NSString *version = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+	NSString *version = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersion"];
 	if (!version || [version isEqualToString:@""])
 		[NSException raise:@"SUNoVersionException" format:@"This host (%@) has no CFBundleVersion! This attribute is required.", [self bundlePath]];
 	return version;
