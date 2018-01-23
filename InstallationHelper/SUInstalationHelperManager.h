@@ -6,8 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SUInatllationHelper.h"
 
-@interface SUInstalationHelperManager : NSObject
+@interface SUInstalationHelperManager : NSObject<SUInstallationHelper>
 
 + (instancetype)manager;
 - (BOOL) establishHelperConnection;

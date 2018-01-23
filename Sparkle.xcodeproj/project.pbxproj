@@ -14,6 +14,15 @@
 		0D3853252017538F008C762C /* SharedConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3853232017538F008C762C /* SharedConstants.h */; };
 		0D3853262017538F008C762C /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853242017538F008C762C /* SharedConstants.m */; };
 		0D385327201753CC008C762C /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853242017538F008C762C /* SharedConstants.m */; };
+		0D38533020175EA5008C762C /* InstallHelperMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D38532E20175EA5008C762C /* InstallHelperMessage.h */; };
+		0D3853312017618A008C762C /* InstallHelperMessage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D38532D20175EA5008C762C /* InstallHelperMessage.c */; };
+		0D3853322017618A008C762C /* InstallHelperMessage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D38532D20175EA5008C762C /* InstallHelperMessage.c */; };
+		0D38533520176451008C762C /* SUInatllationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D38533320176451008C762C /* SUInatllationHelper.h */; };
+		0D38533720176AC4008C762C /* SUInatllationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38533420176451008C762C /* SUInatllationHelper.m */; };
+		0D38533920176AD7008C762C /* SUInatllationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D38533420176451008C762C /* SUInatllationHelper.m */; };
+		0D38533B20176B84008C762C /* SUInstalationHelperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */; };
+		0D38533C20176B97008C762C /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D17D2E6201609C500BC7C2D /* ServiceManagement.framework */; };
+		0D38533D20176BAC008C762C /* InstallHelperMessage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D38532D20175EA5008C762C /* InstallHelperMessage.c */; };
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
@@ -225,6 +234,10 @@
 		0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUInstalationHelperManager.m; sourceTree = "<group>"; };
 		0D3853232017538F008C762C /* SharedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
 		0D3853242017538F008C762C /* SharedConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConstants.m; sourceTree = "<group>"; };
+		0D38532D20175EA5008C762C /* InstallHelperMessage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = InstallHelperMessage.c; sourceTree = "<group>"; };
+		0D38532E20175EA5008C762C /* InstallHelperMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallHelperMessage.h; sourceTree = "<group>"; };
+		0D38533320176451008C762C /* SUInatllationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUInatllationHelper.h; sourceTree = "<group>"; };
+		0D38533420176451008C762C /* SUInatllationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUInatllationHelper.m; sourceTree = "<group>"; };
 		0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUGuidedPackageInstaller.h; sourceTree = "<group>"; };
 		0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUGuidedPackageInstaller.m; sourceTree = "<group>"; };
 		0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.zoomsupport.InstallationHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -503,6 +516,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D38533C20176B97008C762C /* ServiceManagement.framework in Frameworks */,
 				525A2790133D6AE900FD8D70 /* Cocoa.framework in Frameworks */,
 				61177A1F0D1112E900749C97 /* IOKit.framework in Frameworks */,
 				5D06E8FD0FD68D6B005AE3F6 /* libbz2.dylib in Frameworks */,
@@ -620,6 +634,11 @@
 				0DAE157F2015FE9800FFABF7 /* InstallationHelper-Launchd.plist */,
 				0D17D2E92016109600BC7C2D /* SUInstalationHelperManager.h */,
 				0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */,
+				0D38532D20175EA5008C762C /* InstallHelperMessage.c */,
+				0D38532E20175EA5008C762C /* InstallHelperMessage.h */,
+				0D38533320176451008C762C /* SUInatllationHelper.h */,
+				0D38533420176451008C762C /* SUInatllationHelper.m */,
+				6158A1C4137904B300487EC1 /* SUUpdater_Private.h */,
 			);
 			path = InstallationHelper;
 			sourceTree = "<group>";
@@ -798,7 +817,6 @@
 				61CFB2C10E384958007A1735 /* Support */,
 				61B5F8E309C4CE3C00B25A18 /* SUUpdater.h */,
 				61B5F8E409C4CE3C00B25A18 /* SUUpdater.m */,
-				6158A1C4137904B300487EC1 /* SUUpdater_Private.h */,
 			);
 			name = "Update Control";
 			sourceTree = "<group>";
@@ -847,11 +865,13 @@
 				61F83F740DBFE141006FDD30 /* SUBasicUpdateDriver.h in Headers */,
 				5D06E9390FD69271005AE3F6 /* SUBinaryDeltaUnarchiver.h in Headers */,
 				61B078CE15A5FB6100600039 /* SUCodeSigningVerifier.h in Headers */,
+				0D38533020175EA5008C762C /* InstallHelperMessage.h in Headers */,
 				61299A5C09CA6D4500B7442F /* SUConstants.h in Headers */,
 				6102FE4A0E07803800F85D09 /* SUDiskImageUnarchiver.h in Headers */,
 				61299A2F09CA2DAB00B7442F /* SUDSAVerifier.h in Headers */,
 				0D3853252017538F008C762C /* SharedConstants.h in Headers */,
 				61EF67590E25C5B400F754E0 /* SUHost.h in Headers */,
+				0D38533520176451008C762C /* SUInatllationHelper.h in Headers */,
 				618FA5010DAE88B40026945C /* SUInstaller.h in Headers */,
 				0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */,
 				55C14F06136EF6DB00649790 /* SULog.h in Headers */,
@@ -1204,7 +1224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D38533720176AC4008C762C /* SUInatllationHelper.m in Sources */,
 				0DAE157A2015FD2F00FFABF7 /* main.m in Sources */,
+				0D3853322017618A008C762C /* InstallHelperMessage.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,12 +1237,14 @@
 				0D17D2ED2016109A00BC7C2D /* SUInstalationHelperManager.m in Sources */,
 				55C14BD4136EEFCE00649790 /* finish_installation.m in Sources */,
 				55C14F00136EF6B700649790 /* SUConstants.m in Sources */,
+				0D3853312017618A008C762C /* InstallHelperMessage.c in Sources */,
 				55C14F0C136EF6EA00649790 /* SUHost.m in Sources */,
 				55C14F0D136EF6F200649790 /* SUInstaller.m in Sources */,
 				55C14F08136EF6DB00649790 /* SULog.m in Sources */,
 				55C14F24136EF86F00649790 /* SUPackageInstaller.m in Sources */,
 				55C14F21136EF84D00649790 /* SUPlainInstaller.m in Sources */,
 				0D385327201753CC008C762C /* SharedConstants.m in Sources */,
+				0D38533920176AD7008C762C /* SUInatllationHelper.m in Sources */,
 				55C14F7E136F005000649790 /* SUPlainInstallerInternals.m in Sources */,
 				55C14F22136EF86000649790 /* SUStandardVersionComparator.m in Sources */,
 				55C14F20136EF84300649790 /* SUStatusController.m in Sources */,
@@ -1260,9 +1284,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D06E8EB0FD68CE4005AE3F6 /* bspatch.c in Sources */,
+				0D38533D20176BAC008C762C /* InstallHelperMessage.c in Sources */,
 				610EC1E00CF3A5FE00AE239E /* NTSynchronousTask.m in Sources */,
 				61B5FBB709C4FAFF00B25A18 /* SUAppcast.m in Sources */,
 				61B5FC6F09C51F4900B25A18 /* SUAppcastItem.m in Sources */,
+				0D38533B20176B84008C762C /* SUInstalationHelperManager.m in Sources */,
 				6120721309CC5C4B007FE0F6 /* SUAutomaticUpdateAlert.m in Sources */,
 				61B93B280DD0FDD300DCD2F8 /* SUAutomaticUpdateDriver.m in Sources */,
 				61F83F720DBFE140006FDD30 /* SUBasicUpdateDriver.m in Sources */,

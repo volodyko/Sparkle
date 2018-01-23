@@ -578,10 +578,10 @@ static NSString * const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefault
 	[task setArguments:arguments];
 	
 	[task launch];
-	[task waitUntilExit];
+	//[task waitUntilExit];
 	
 	//Remove helper app
-	[[NSFileManager defaultManager] removeItemAtPath:relaunchPath error:nil];
+	//[[NSFileManager defaultManager] removeItemAtPath:relaunchPath error:nil];
 }
 
 @end

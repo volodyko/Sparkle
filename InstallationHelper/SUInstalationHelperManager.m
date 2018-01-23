@@ -8,6 +8,7 @@
 #import "SUInstalationHelperManager.h"
 #import <ServiceManagement/ServiceManagement.h>
 #import "SULog.h"
+#import "InstallHelperMessage.h"
 
 NSString *const kRAHelperAppName = @"com.zoomsupport.InstallationHelper";
 static NSString *const kRAHelperPrompt = @"Please enter your password to install Installation Helper.";
@@ -30,13 +31,35 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 
 - (BOOL)establishHelperConnection
 {
+	BOOL result = NO;
 	NSError *error = nil;
-	if (![self installHelperApplicationWithPrompt:kRAHelperPrompt error:&error])
+	
+	BOOL socketExist = [[NSFileManager defaultManager] fileExistsAtPath:@kSocketPath];
+	if(socketExist && isCurrentVersion())
 	{
-		SULog(@"Bless Helper Error: %@", error);
-		return NO;
+		SULog(@"socketExist && isCurrentVersion()");
+		result = YES;
 	}
-	return YES;
+	else if ([self installHelperApplicationWithPrompt:kRAHelperPrompt error:&error])
+	{
+		result = YES;
+	}
+	return result;
+}
+
+- (int)sendMessageToHelper:(struct SUHelperMessage) messageOut
+{
+	int result = -1;
+	
+	struct SUHelperMessage messageIn;
+	if(sendMessage(&messageOut, &messageIn)) {
+		exit(1);
+	}
+	
+	memcpy(&result, messageIn.data, sizeof(result));
+	SULog(@"result is %i", result);
+	
+	return result;
 }
 
 
@@ -120,6 +143,19 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 		*aErrorPtr = error;
 	}
 	return result;
+}
+
+- (nullable NSString *)performTaskWithLaunchPath:(nullable NSString *)aPath
+									   arguments:(nonnull NSArray *)anArguments
+										   error:(NSError * __autoreleasing _Nonnull * _Nullable)anError
+{
+	struct SUHelperMessage messageOut;
+	initMessage(messageOut, SUM_Install);
+	messageOut.dataSize = strlen([aPath UTF8String]) + 1; //add trailing \0
+	strcpy((char*)messageOut.data, [aPath UTF8String]);
+	[self sendMessageToHelper:messageOut];
+	
+	return nil;
 }
 
 

@@ -9,7 +9,7 @@
 #import "SUGuidedPackageInstaller.h"
 #import <Security/Security.h>
 #import "sys/stat.h"
-
+#import "SUInstalationHelperManager.h"
 
 static BOOL AuthorizationExecuteWithPrivilegesAndWait(AuthorizationRef authorization, const char* executablePath, AuthorizationFlags options, char* const* arguments)
 {
@@ -106,9 +106,9 @@ static BOOL AuthorizationExecuteWithPrivilegesAndWait(AuthorizationRef authoriza
         
         // Create authorization for installer executable
         BOOL validInstallation = NO;
-        AuthorizationRef auth = [self authorizationForExecutable:installerPath];
-        if (auth != NULL)
-        {
+        //AuthorizationRef auth = [self authorizationForExecutable:installerPath];
+        //if (auth != NULL)
+        //{
             char pathBuffer[PATH_MAX] = {0};
             [packagePath getFileSystemRepresentation:pathBuffer maxLength:sizeof(pathBuffer)];
             
@@ -120,18 +120,19 @@ static BOOL AuthorizationExecuteWithPrivilegesAndWait(AuthorizationRef authoriza
                 "/",
                 NULL
             };
-            validInstallation = AuthorizationExecuteWithPrivilegesAndWait(auth,
-                                                                          [installerPath fileSystemRepresentation],
-                                                                          kAuthorizationFlagDefaults,
-                                                                          arguments);
+		[[SUInstalationHelperManager manager] performTaskWithLaunchPath:packagePath arguments:nil error:nil];
+            //validInstallation = AuthorizationExecuteWithPrivilegesAndWait(auth,
+            //                                                              [installerPath fileSystemRepresentation],
+            //                                                              kAuthorizationFlagDefaults,
+            //                                                              arguments);
             // TODO: wait for communications pipe to close via fileno & CFSocketCreateWithNative
-            AuthorizationFree(auth,kAuthorizationFlagDefaults);
-        }
-        else
-        {
-            NSString* errorMessage = [NSString stringWithFormat:@"Sparkle Updater: Script authorization denied."];
-            error = [NSError errorWithDomain:SUSparkleErrorDomain code:SUInstallationError userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];
-        }
+          //  AuthorizationFree(auth,kAuthorizationFlagDefaults);
+        //}
+        //else
+        //{
+        //    NSString* errorMessage = [NSString stringWithFormat:@"Sparkle Updater: Script authorization denied."];
+        //    error = [NSError errorWithDomain:SUSparkleErrorDomain code:SUInstallationError userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];
+        //}
         
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:host, SUPackageInstallerHostKey, delegate, SUPackageInstallerDelegateKey, installationPath, SUPackageInstallerInstallationPathKey, nil];
