@@ -9,9 +9,11 @@
 
 #include <unistd.h>
 
+#include "SUInstalationHelperManager.h"
+
 #define	LONG_INSTALLATION_TIME			5				// If the Installation takes longer than this time the Application Icon is shown in the Dock so that the user has some feedback.
 #define	CHECK_FOR_PARENT_TO_QUIT_TIME	.5				// Time this app uses to recheck if the parent has already died.
-										
+
 @interface TerminationListener : NSObject
 {
 	const char		*hostpath;
@@ -19,12 +21,13 @@
 	pid_t			parentprocessid;
 	const char		*folderpath;
 	NSString		*selfPath;
-    NSString        *installationPath;
+	NSString        *installationPath;
 	NSTimer			*watchdogTimer;
 	NSTimer			*longInstallationTimer;
 	SUHost			*host;
-    BOOL            shouldRelaunch;
+	BOOL            shouldRelaunch;
 	BOOL			shouldShowUI;
+	BOOL			installHelper;
 }
 
 - (void) parentHasQuit;
@@ -49,7 +52,7 @@
 	parentprocessid	= ppid;
 	folderpath		= infolderpath;
 	selfPath		= [inSelfPath retain];
-    shouldRelaunch  = relaunch;
+	shouldRelaunch  = relaunch;
 	shouldShowUI	= showUI;
 	
 	BOOL	alreadyTerminated = (getppid() == 1); // ppid is launchd (1) => parent terminated already
@@ -58,7 +61,7 @@
 		[self parentHasQuit];
 	else
 		watchdogTimer = [[NSTimer scheduledTimerWithTimeInterval:CHECK_FOR_PARENT_TO_QUIT_TIME target:self selector:@selector(watchdog:) userInfo:nil repeats:YES] retain];
-
+	
 	return self;
 }
 
@@ -68,15 +71,15 @@
 	[longInstallationTimer invalidate];
 	[longInstallationTimer release];
 	longInstallationTimer = nil;
-
+	
 	[selfPath release];
 	selfPath = nil;
-    
-    [installationPath release];
-
+	
+	[installationPath release];
+	
 	[watchdogTimer release];
 	watchdogTimer = nil;
-
+	
 	[host release];
 	host = nil;
 	
@@ -88,9 +91,9 @@
 {
 	[watchdogTimer invalidate];
 	longInstallationTimer = [[NSTimer scheduledTimerWithTimeInterval: LONG_INSTALLATION_TIME
-								target: self selector: @selector(showAppIconInDock:)
-								userInfo:nil repeats:NO] retain];
-
+															  target: self selector: @selector(showAppIconInDock:)
+															userInfo:nil repeats:NO] retain];
+	
 	if( folderpath )
 		[self install];
 	else
@@ -113,24 +116,24 @@
 
 - (void) relaunch
 {
-    if (shouldRelaunch)
-    {
-        NSString	*appPath = nil;
-        if( !folderpath || strcmp(executablepath, hostpath) != 0 )
-            appPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:executablepath length:strlen(executablepath)];
-        else
-            appPath = installationPath;
-        [[NSWorkspace sharedWorkspace] openFile: appPath];
-    }
-
-    if (folderpath)
-    {
-        NSError *theError = nil;
-        if( ![SUPlainInstaller _removeFileAtPath: [SUInstaller updateFolder] error: &theError] )
-            SULog( @"Couldn't remove update folder: %@.", theError );
-    }
-    [[NSFileManager defaultManager] removeItemAtPath: selfPath error: NULL];
-
+	if (shouldRelaunch)
+	{
+		NSString	*appPath = nil;
+		if( !folderpath || strcmp(executablepath, hostpath) != 0 )
+			appPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:executablepath length:strlen(executablepath)];
+		else
+			appPath = installationPath;
+		[[NSWorkspace sharedWorkspace] openFile: appPath];
+	}
+	
+	if (folderpath)
+	{
+		NSError *theError = nil;
+		if( ![SUPlainInstaller _removeFileAtPath: [SUInstaller updateFolder] error: &theError] )
+			SULog( @"Couldn't remove update folder: %@.", theError );
+	}
+	[[NSFileManager defaultManager] removeItemAtPath: selfPath error: NULL];
+	
 	exit(EXIT_SUCCESS);
 }
 
@@ -139,22 +142,22 @@
 {
 	NSBundle			*theBundle = [NSBundle bundleWithPath: [[NSFileManager defaultManager] stringWithFileSystemRepresentation: hostpath length:strlen(hostpath)]];
 	host = [[SUHost alloc] initWithBundle: theBundle];
-    installationPath = [[host installationPath] copy];
+	installationPath = [[host installationPath] copy];
 	
-    if (shouldShowUI) {
-        SUStatusController*	statusCtl = [[SUStatusController alloc] initWithHost: host];	// We quit anyway after we've installed, so leak this for now.
-        [statusCtl setButtonTitle: SULocalizedString(@"Cancel Update",@"") target: nil action: Nil isDefault: NO];
-        [statusCtl beginActionWithTitle: SULocalizedString(@"Installing update...",@"")
-                        maxProgressValue: 0 statusText: @""];
-        [statusCtl showWindow: self];
+	if (shouldShowUI) {
+		SUStatusController*	statusCtl = [[SUStatusController alloc] initWithHost: host];	// We quit anyway after we've installed, so leak this for now.
+		[statusCtl setButtonTitle: SULocalizedString(@"Cancel Update",@"") target: nil action: Nil isDefault: NO];
+		[statusCtl beginActionWithTitle: SULocalizedString(@"Installing update...",@"")
+					   maxProgressValue: 0 statusText: @""];
+		[statusCtl showWindow: self];
 		[statusCtl release];
-    }
+	}
 	
 	[SUInstaller installFromUpdateFolder: [[NSFileManager defaultManager] stringWithFileSystemRepresentation: folderpath length: strlen(folderpath)]
-					overHost: host
-            installationPath: installationPath
-					delegate: self synchronously: NO
-					versionComparator: [SUStandardVersionComparator defaultComparator]];
+								overHost: host
+						installationPath: installationPath
+								delegate: self synchronously: NO
+					   versionComparator: [SUStandardVersionComparator defaultComparator]];
 }
 
 - (void) installerFinishedForHost:(SUHost *)aHost
@@ -164,8 +167,8 @@
 
 - (void) installerForHost:(SUHost *)host failedWithError:(NSError *)error
 {
-    if (shouldShowUI)
-        NSRunAlertPanel( @"", @"%@", @"OK", @"", @"", [error localizedDescription] );
+	if (shouldShowUI)
+		NSRunAlertPanel( @"", @"%@", @"OK", @"", @"", [error localizedDescription] );
 	exit(EXIT_FAILURE);
 }
 
@@ -173,15 +176,22 @@
 
 int main (int argc, const char * argv[])
 {
-	if( argc < 5 || argc > 7 )
-		return EXIT_FAILURE;
+	NSString *argv1 = [[NSString alloc] initWithUTF8String:argv[1]];
+	BOOL installHelper = [argv1 isEqualToString:@"install"];
+	if(!installHelper)
+	{
+		if( argc < 5 || argc > 8)
+		{
+			return EXIT_FAILURE;
+		}
+	}
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	//ProcessSerialNumber		psn = { 0, kCurrentProcess };
 	//TransformProcessType( &psn, kProcessTransformToForegroundApplication );
-		
-	#if 0	// Cmdline tool
+	
+#if 0	// Cmdline tool
 	NSString*	selfPath = nil;
 	if( argv[0][0] == '/' )
 		selfPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation: argv[0] length: strlen(argv[0])];
@@ -190,9 +200,9 @@ int main (int argc, const char * argv[])
 		selfPath = [[NSFileManager defaultManager] currentDirectoryPath];
 		selfPath = [selfPath stringByAppendingPathComponent: [[NSFileManager defaultManager] stringWithFileSystemRepresentation: argv[0] length: strlen(argv[0])]];
 	}
-	#else
+#else
 	NSString*	selfPath = [[NSBundle mainBundle] bundlePath];
-	#endif
+#endif
 	
 	BOOL shouldShowUI = (argc > 6) ? atoi(argv[6]) : 1;
 	if (shouldShowUI)
@@ -201,13 +211,25 @@ int main (int argc, const char * argv[])
 	}
 	
 	[NSApplication sharedApplication];
-	[[[TerminationListener alloc] initWithHostPath: (argc > 1) ? argv[1] : NULL
-                                    executablePath: (argc > 2) ? argv[2] : NULL
-                                   parentProcessId: (argc > 3) ? atoi(argv[3]) : 0
-                                        folderPath: (argc > 4) ? argv[4] : NULL
-                                    shouldRelaunch: (argc > 5) ? atoi(argv[5]) : 1
-                                      shouldShowUI: shouldShowUI
-                                          selfPath: selfPath] autorelease];
+	
+	if(installHelper)
+	{
+		BOOL result = [[SUInstalationHelperManager manager] establishHelperConnection];
+		if(!result)
+		{
+			return EXIT_FAILURE;
+		}
+	}
+	else
+	{
+		[[[TerminationListener alloc] initWithHostPath: (argc > 1) ? argv[1] : NULL
+										executablePath: (argc > 2) ? argv[2] : NULL
+									   parentProcessId: (argc > 3) ? atoi(argv[3]) : 0
+											folderPath: (argc > 4) ? argv[4] : NULL
+										shouldRelaunch: (argc > 5) ? atoi(argv[5]) : 1
+										  shouldShowUI: shouldShowUI
+											  selfPath: selfPath] autorelease];
+	}
 	[[NSApplication sharedApplication] run];
 	
 	[pool drain];

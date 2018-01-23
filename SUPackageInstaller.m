@@ -47,7 +47,7 @@ NSString *SUPackageInstallerErrorKey = @"SUPackageInstallerInstallationPathKey";
 	// -n = Open another instance if already open.
 	// -b = app bundle identifier
 	command = @"/usr/bin/open";
-	args = [NSArray arrayWithObjects:@"-W", @"-n", @"-b", @"com.apple.installer", path, nil];
+	args = [NSArray arrayWithObjects:@"-W", @"-n", @"-b", @"com.apple.installer", path,nil];
 	
 	if (![[NSFileManager defaultManager] fileExistsAtPath:command])
 	{

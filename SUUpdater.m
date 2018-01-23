@@ -19,6 +19,7 @@
 #import "SULog.h"
 #import "SUCodeSigningVerifier.h"
 #include <SystemConfiguration/SystemConfiguration.h>
+#include "SUPlainInstallerInternals.h"
 
 NSString *const SUUpdaterDidFinishLoadingAppCastNotification = @"SUUpdaterDidFinishLoadingAppCastNotification";
 NSString *const SUUpdaterDidFindValidUpdateNotification = @"SUUpdaterDidFindValidUpdateNotification";
@@ -557,5 +558,30 @@ static NSString * const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefault
 }
 
 - (NSBundle *)hostBundle { return [host bundle]; }
+
+- (void)installHelper
+{
+	//Copy Autoinstall.app to Application Support
+	NSString *const finishInstallToolName = FINISH_INSTALL_TOOL_NAME_STRING;
+	NSString *relaunchPath = [SPARKLE_BUNDLE pathForResource:finishInstallToolName ofType:@"app"];
+	NSString *targetPath = [[host appSupportPath] stringByAppendingPathComponent:[relaunchPath lastPathComponent]];
+	if( [SUPlainInstaller copyPathWithAuthentication: relaunchPath overPath: targetPath temporaryName: nil error:nil] )
+	{
+		relaunchPath = [targetPath retain];
+	}
+	//Run Autoinstall app with argument for helper install
+	NSTask *task = [NSTask new];
+	NSArray *arguments = [NSArray arrayWithObjects:@"install", nil];
+	NSString *relaunchToolPath = [[relaunchPath stringByAppendingPathComponent: @"/Contents/MacOS"] stringByAppendingPathComponent: finishInstallToolName];
+	
+	[task setLaunchPath:relaunchToolPath];
+	[task setArguments:arguments];
+	
+	[task launch];
+	[task waitUntilExit];
+	
+	//Remove helper app
+	[[NSFileManager defaultManager] removeItemAtPath:relaunchPath error:nil];
+}
 
 @end

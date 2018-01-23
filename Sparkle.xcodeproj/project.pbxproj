@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D17D2E7201609C500BC7C2D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D17D2E6201609C500BC7C2D /* ServiceManagement.framework */; };
+		0D17D2E820160D7300BC7C2D /* com.zoomsupport.InstallationHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */; };
+		0D17D2EB2016109600BC7C2D /* SUInstalationHelperManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D17D2E92016109600BC7C2D /* SUInstalationHelperManager.h */; };
+		0D17D2ED2016109A00BC7C2D /* SUInstalationHelperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */; };
+		0D3853252017538F008C762C /* SharedConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3853232017538F008C762C /* SharedConstants.h */; };
+		0D3853262017538F008C762C /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853242017538F008C762C /* SharedConstants.m */; };
+		0D385327201753CC008C762C /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853242017538F008C762C /* SharedConstants.m */; };
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
+		0DAE157A2015FD2F00FFABF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAE15792015FD2F00FFABF7 /* main.m */; };
 		3772FEA913DE0B6B00F79537 /* SUVersionDisplayProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		525A2790133D6AE900FD8D70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
 		525A27A0133D6B9700FD8D70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525A278F133D6AE900FD8D70 /* Cocoa.framework */; };
@@ -139,6 +147,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0DAE15802016016A00FFABF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DAE15762015FD2F00FFABF7;
+			remoteInfo = InstallationHelper;
+		};
 		55C14F96136F044100649790 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -170,6 +185,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0DAE15822016017500FFABF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				0D17D2E820160D7300BC7C2D /* com.zoomsupport.InstallationHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61B5FB4D09C4E9FA00B25A18 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,8 +220,17 @@
 		0263187714FEBB42005EBF43 /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = uk; path = uk.lproj/SUUpdatePermissionPrompt.xib; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		0D17D2E6201609C500BC7C2D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		0D17D2E92016109600BC7C2D /* SUInstalationHelperManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUInstalationHelperManager.h; sourceTree = "<group>"; };
+		0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUInstalationHelperManager.m; sourceTree = "<group>"; };
+		0D3853232017538F008C762C /* SharedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
+		0D3853242017538F008C762C /* SharedConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConstants.m; sourceTree = "<group>"; };
 		0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUGuidedPackageInstaller.h; sourceTree = "<group>"; };
 		0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUGuidedPackageInstaller.m; sourceTree = "<group>"; };
+		0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.zoomsupport.InstallationHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DAE15792015FD2F00FFABF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0DAE157E2015FD5A00FFABF7 /* InstallationHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstallationHelper-Info.plist"; sourceTree = "<group>"; };
+		0DAE157F2015FE9800FFABF7 /* InstallationHelper-Launchd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstallationHelper-Launchd.plist"; sourceTree = "<group>"; };
 		3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
 		525A278F133D6AE900FD8D70 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		550347001370023A00AE7681 /* Sparkle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Sparkle.icns; sourceTree = "<group>"; };
@@ -358,7 +392,7 @@
 		61B078CC15A5FB6100600039 /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUCodeSigningVerifier.h; sourceTree = "<group>"; };
 		61B078CD15A5FB6100600039 /* SUCodeSigningVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUCodeSigningVerifier.m; sourceTree = "<group>"; };
 		61B5F8E309C4CE3C00B25A18 /* SUUpdater.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SUUpdater.h; sourceTree = "<group>"; };
-		61B5F8E409C4CE3C00B25A18 /* SUUpdater.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SUUpdater.m; sourceTree = "<group>"; };
+		61B5F8E409C4CE3C00B25A18 /* SUUpdater.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SUUpdater.m; sourceTree = "<group>"; wrapsLines = 0; };
 		61B5F8E509C4CE3C00B25A18 /* SUPlainInstallerInternals.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SUPlainInstallerInternals.m; sourceTree = "<group>"; };
 		61B5F8F609C4CEB300B25A18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		61B5F90209C4CEE200B25A18 /* Sparkle Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sparkle Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,10 +452,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0DAE15742015FD2F00FFABF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55C14BB5136EEF1500649790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D17D2E7201609C500BC7C2D /* ServiceManagement.framework in Frameworks */,
 				55C14EE8136EF61D00649790 /* Cocoa.framework in Frameworks */,
 				55C14F9A136F045400649790 /* Security.framework in Frameworks */,
 			);
@@ -483,6 +525,7 @@
 				61B5F90209C4CEE200B25A18 /* Sparkle Test App.app */,
 				612279D90DB5470200AB99EA /* Sparkle Unit Tests.octest */,
 				8DC2EF5B0486A6940098B216 /* Sparkle.framework */,
+				0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -490,6 +533,7 @@
 		0867D691FE84028FC02AAC07 /* Sparkle */ = {
 			isa = PBXGroup;
 			children = (
+				0D38532220175377008C762C /* Shared */,
 				61F83F6E0DBFE07A006FDD30 /* Update Control */,
 				61299B3909CB055000B7442F /* Appcast Support */,
 				618FA6DB0DB485440026945C /* Installation */,
@@ -502,7 +546,10 @@
 				61B5F91D09C4CF7F00B25A18 /* Test Application Sources */,
 				0867D69AFE84028FC02AAC07 /* Apple Frameworks and Libraries */,
 				FA1941C40D94A6EA00DD942E /* Configurations */,
+				0DAE15782015FD2F00FFABF7 /* InstallationHelper */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				0DAE15702015F43900FFABF7 /* Recovered References */,
+				0D17D2E5201609C400BC7C2D /* Frameworks */,
 			);
 			name = Sparkle;
 			sourceTree = "<group>";
@@ -538,6 +585,43 @@
 				55C14C05136EF2C700649790 /* SUUpdatePermissionPrompt.xib */,
 			);
 			name = "Framework Resources";
+			sourceTree = "<group>";
+		};
+		0D17D2E5201609C400BC7C2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D17D2E6201609C500BC7C2D /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D38532220175377008C762C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0D3853232017538F008C762C /* SharedConstants.h */,
+				0D3853242017538F008C762C /* SharedConstants.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		0DAE15702015F43900FFABF7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				618E9CFC0E7328F1004646D8 /* dsa_pub.pem */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		0DAE15782015FD2F00FFABF7 /* InstallationHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0DAE15792015FD2F00FFABF7 /* main.m */,
+				0DAE157E2015FD5A00FFABF7 /* InstallationHelper-Info.plist */,
+				0DAE157F2015FE9800FFABF7 /* InstallationHelper-Launchd.plist */,
+				0D17D2E92016109600BC7C2D /* SUInstalationHelperManager.h */,
+				0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */,
+			);
+			path = InstallationHelper;
 			sourceTree = "<group>";
 		};
 		55C14BD5136EEFD000649790 /* finish_installation tool */ = {
@@ -766,6 +850,7 @@
 				61299A5C09CA6D4500B7442F /* SUConstants.h in Headers */,
 				6102FE4A0E07803800F85D09 /* SUDiskImageUnarchiver.h in Headers */,
 				61299A2F09CA2DAB00B7442F /* SUDSAVerifier.h in Headers */,
+				0D3853252017538F008C762C /* SharedConstants.h in Headers */,
 				61EF67590E25C5B400F754E0 /* SUHost.h in Headers */,
 				618FA5010DAE88B40026945C /* SUInstaller.h in Headers */,
 				0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */,
@@ -778,6 +863,7 @@
 				61B93C090DD112FF00DCD2F8 /* SUScheduledUpdateDriver.h in Headers */,
 				61A225A40D1C4AC000430CCD /* SUStandardVersionComparator.h in Headers */,
 				6196CFF909C72148000DC222 /* SUStatusController.h in Headers */,
+				0D17D2EB2016109600BC7C2D /* SUInstalationHelperManager.h in Headers */,
 				61A2279C0D1CEE7600430CCD /* SUSystemProfiler.h in Headers */,
 				61B93A3C0DD02D7000DCD2F8 /* SUUIBasedUpdateDriver.h in Headers */,
 				61299A8D09CA790200B7442F /* SUUnarchiver.h in Headers */,
@@ -798,6 +884,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0DAE15762015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DAE157B2015FD2F00FFABF7 /* Build configuration list for PBXNativeTarget "com.zoomsupport.InstallationHelper" */;
+			buildPhases = (
+				0DAE15732015FD2F00FFABF7 /* Sources */,
+				0DAE15742015FD2F00FFABF7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = com.zoomsupport.InstallationHelper;
+			productName = InstallationHelper;
+			productReference = 0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 		55C14BB6136EEF1500649790 /* finish_installation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55C14BBE136EEF1500649790 /* Build configuration list for PBXNativeTarget "finish_installation" */;
@@ -805,10 +907,12 @@
 				55C14BB3136EEF1500649790 /* Resources */,
 				55C14BB4136EEF1500649790 /* Sources */,
 				55C14BB5136EEF1500649790 /* Frameworks */,
+				0DAE15822016017500FFABF7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0DAE15812016016A00FFABF7 /* PBXTargetDependency */,
 			);
 			name = finish_installation;
 			productName = finish_installation;
@@ -901,6 +1005,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
+				TargetAttributes = {
+					0DAE15762015FD2F00FFABF7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "Sparkle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -957,6 +1067,7 @@
 				612279D80DB5470200AB99EA /* Sparkle Unit Tests */,
 				5D06E8CF0FD68C7C005AE3F6 /* BinaryDelta */,
 				55C14BB6136EEF1500649790 /* finish_installation */,
+				0DAE15762015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -1089,10 +1200,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0DAE15732015FD2F00FFABF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DAE157A2015FD2F00FFABF7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55C14BB4136EEF1500649790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D17D2ED2016109A00BC7C2D /* SUInstalationHelperManager.m in Sources */,
 				55C14BD4136EEFCE00649790 /* finish_installation.m in Sources */,
 				55C14F00136EF6B700649790 /* SUConstants.m in Sources */,
 				55C14F0C136EF6EA00649790 /* SUHost.m in Sources */,
@@ -1100,6 +1220,7 @@
 				55C14F08136EF6DB00649790 /* SULog.m in Sources */,
 				55C14F24136EF86F00649790 /* SUPackageInstaller.m in Sources */,
 				55C14F21136EF84D00649790 /* SUPlainInstaller.m in Sources */,
+				0D385327201753CC008C762C /* SharedConstants.m in Sources */,
 				55C14F7E136F005000649790 /* SUPlainInstallerInternals.m in Sources */,
 				55C14F22136EF86000649790 /* SUStandardVersionComparator.m in Sources */,
 				55C14F20136EF84300649790 /* SUStatusController.m in Sources */,
@@ -1157,6 +1278,7 @@
 				55C14F07136EF6DB00649790 /* SULog.m in Sources */,
 				618FA5230DAE8E8A0026945C /* SUPackageInstaller.m in Sources */,
 				61D85D6D0E10B2ED00F9B4A9 /* SUPipedUnarchiver.m in Sources */,
+				0D3853262017538F008C762C /* SharedConstants.m in Sources */,
 				618FA5060DAE8AB80026945C /* SUPlainInstaller.m in Sources */,
 				61B5F8EF09C4CE3C00B25A18 /* SUPlainInstallerInternals.m in Sources */,
 				0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */,
@@ -1180,6 +1302,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0DAE15812016016A00FFABF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0DAE15762015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */;
+			targetProxy = 0DAE15802016016A00FFABF7 /* PBXContainerItemProxy */;
+		};
 		55C14F97136F044100649790 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55C14BB6136EEF1500649790 /* finish_installation */;
@@ -1352,11 +1479,145 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0DAE157C2015FD2F00FFABF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "InstallationHelper/InstallationHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"InstallationHelper/InstallationHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"InstallationHelper/InstallationHelper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zoomsupport.InstallationHelper;
+				PRODUCT_NAME = com.zoomsupport.InstallationHelper;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0DAE157D2015FD2F00FFABF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "InstallationHelper/InstallationHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"InstallationHelper/InstallationHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"InstallationHelper/InstallationHelper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zoomsupport.InstallationHelper;
+				PRODUCT_NAME = com.zoomsupport.InstallationHelper;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941CA0D94A70100DD942E /* ConfigFrameworkDebug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.andymatuschak.Sparkle;
 				SKIP_INSTALL = YES;
 			};
@@ -1367,6 +1628,7 @@
 			baseConfigurationReference = FA1941D50D94A70100DD942E /* ConfigFrameworkRelease.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.andymatuschak.Sparkle;
 				SKIP_INSTALL = YES;
 			};
@@ -1417,8 +1679,9 @@
 			baseConfigurationReference = FA1941D40D94A70100DD942E /* ConfigRelaunchRelease.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = finish_installation.pch;
@@ -1491,6 +1754,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0DAE157B2015FD2F00FFABF7 /* Build configuration list for PBXNativeTarget "com.zoomsupport.InstallationHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DAE157C2015FD2F00FFABF7 /* Debug */,
+				0DAE157D2015FD2F00FFABF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "Sparkle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

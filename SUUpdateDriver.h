@@ -11,6 +11,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifdef FINISH_INSTALL_TOOL_NAME
+// FINISH_INSTALL_TOOL_NAME expands to unquoted finish_install
+#define QUOTE_NS_STRING2(str) @"" #str
+#define QUOTE_NS_STRING1(str) QUOTE_NS_STRING2(str)
+#define FINISH_INSTALL_TOOL_NAME_STRING QUOTE_NS_STRING1(FINISH_INSTALL_TOOL_NAME)
+#else
+#error FINISH_INSTALL_TOOL_NAME not defined
+#endif
+
+
 extern NSString * const SUUpdateDriverFinishedNotification;
 
 @class SUHost, SUUpdater;
