@@ -18,6 +18,10 @@
 
 #import "InstallHelperMessage.h"
 
+
+//Defines
+int performInstall(unsigned char *installerPath);
+
 #define MAX_PATH_SIZE 128
 // -1 error
 int get_listener_fd() {
@@ -128,9 +132,9 @@ int respondToRequest() {
 			}
 			case SUM_Install: {
 				syslog(LOG_NOTICE, "path is %s", messageIn.data);
-				int pid = getpid();
-				messageOut.dataSize = sizeof(pid);
-				memcpy(messageOut.data, &pid, messageOut.dataSize);
+				int result = performInstall(messageIn.data);
+				messageOut.dataSize = sizeof(result);
+				memcpy(messageOut.data, &result, messageOut.dataSize);
 				break;
 			}
 			default:
@@ -154,6 +158,13 @@ int respondToRequest() {
 		close(connection_fd);
 	}
 	return connection_fd == -1 ? 0 : 1;
+}
+
+int performInstall(unsigned char *installerPath)
+{
+	char command[100];
+	sprintf(command,"/usr/sbin/installer -pkg %s -target / ", installerPath);
+	return system(command);
 }
 
 int main(int argc, const char * argv[]) {
