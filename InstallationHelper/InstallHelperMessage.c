@@ -26,7 +26,8 @@ int readBytes(int size, int fd, unsigned char *buffer)
 	fds.events = POLLIN;
 	while (0 < bytesLeft)
 	{
-		int bytesReady = poll(&fds, 1, 1000); // wait one second
+		int bytesReady = poll(&fds, 1, -1); 
+	
 		if(bytesReady == -1)
 		{
 			syslog(LOG_NOTICE, "poll() error = %d\n", errno);
