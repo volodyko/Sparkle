@@ -29,20 +29,21 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 	return sSUHelperManager;
 }
 
-- (BOOL)establishHelperConnection
+- (enum InstallStatus)establishHelperConnection
 {
-	BOOL result = NO;
+	enum InstallStatus result = HELPER_INSTALLED_ERROR_EXIT_CODE;
 	NSError *error = nil;
 	
 	BOOL socketExist = [[NSFileManager defaultManager] fileExistsAtPath:@kSocketPath];
 	if(socketExist && isCurrentVersion())
 	{
 		SULog(@"socketExist && isCurrentVersion()");
-		result = YES;
+		result = HELPER_INSTALLED_EXIST_EXIT_CODE;
 	}
 	else if ([self installHelperApplicationWithPrompt:kRAHelperPrompt error:&error])
 	{
-		result = YES;
+		SULog(@"helper isntalled");
+		result = HELPER_INSTALLED_SUCCESS_EXIT_CODE;
 	}
 	return result;
 }
@@ -122,7 +123,7 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 		 * is extracted and placed in /Library/LaunchDaemons and then loaded. The
 		 * executable is placed in /Library/PrivilegedHelperTools.
 		 */
-		SULog(self.className, @"User authorization completed");
+		SULog(@"User authorization completed");
 		CFErrorRef errorRef = NULL;
 		SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)kRAHelperAppName, authRef, YES, NULL);
 		
@@ -151,9 +152,9 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 	initMessage(messageOut, SUM_Install);
 	messageOut.dataSize = strlen([aPath UTF8String]) + 1; //add trailing \0
 	strcpy((char*)messageOut.data, [aPath UTF8String]);
-	[self sendMessageToHelper:messageOut];
-	
-	return nil;
+	int result = [self sendMessageToHelper:messageOut];
+
+	return result =! 0 ? NO : YES;
 }
 
 

@@ -13,7 +13,7 @@
 #import "SUConstants.h"
 #import "SULog.h"
 #import "SUGuidedPackageInstaller.h"
-
+#import "SUPrivilegedGuidedPackageInstaller.h"
 
 @implementation SUInstaller
 
@@ -43,7 +43,7 @@ static NSString*	sUpdateFolder = nil;
         return NO;
 }
 
-+ (NSString *)installSourcePathInUpdateFolder:(NSString *)inUpdateFolder forHost:(SUHost *)host isPackage:(BOOL *)isPackagePtr isGuided:(BOOL *)isGuidedPtr
++ (NSString *)installSourcePathInUpdateFolder:(NSString *)inUpdateFolder forHost:(SUHost *)host isPackage:(BOOL *)isPackagePtr isGuided:(BOOL *)isGuidedPtr isSilent:(BOOL *)isSilentPtr
 
 {
     // Search subdirectories for the application
@@ -53,6 +53,7 @@ static NSString*	sUpdateFolder = nil;
     *alternateBundleFileName = [[host name] stringByAppendingPathExtension:[[host bundlePath] pathExtension]];
     BOOL isPackage = NO;
     BOOL isGuided = YES;
+	BOOL isSilent = NO;
     NSString *fallbackPackagePath = nil;
     NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: inUpdateFolder];
     
@@ -117,6 +118,7 @@ static NSString*	sUpdateFolder = nil;
         if ([[[newAppDownloadPath stringByDeletingPathExtension] pathExtension] isEqualToString:@"sparkle_interactive"]) {
             isGuided = NO;
         }
+		
     }
     
     
@@ -128,7 +130,7 @@ static NSString*	sUpdateFolder = nil;
 + (NSString *)appPathInUpdateFolder:(NSString *)updateFolder forHost:(SUHost *)host
 {
     BOOL isPackage = NO;
-    NSString *path = [self installSourcePathInUpdateFolder:updateFolder forHost:host isPackage:&isPackage isGuided:nil];
+    NSString *path = [self installSourcePathInUpdateFolder:updateFolder forHost:host isPackage:&isPackage isGuided:nil isSilent:nil];
     return isPackage ? nil : path;
 }
 
@@ -136,7 +138,9 @@ static NSString*	sUpdateFolder = nil;
 {
     BOOL isPackage = NO;
     BOOL isGuided = NO;
-    NSString *newAppDownloadPath = [self installSourcePathInUpdateFolder:inUpdateFolder forHost:host isPackage:&isPackage isGuided:&isGuided];
+	//TODO: Process silent update type
+	BOOL isSilent = YES;
+    NSString *newAppDownloadPath = [self installSourcePathInUpdateFolder:inUpdateFolder forHost:host isPackage:&isPackage isGuided:&isGuided isSilent:&isSilent];
     if (newAppDownloadPath == nil)
     {
         [self finishInstallationToPath:installationPath withResult:NO host:host error:[NSError errorWithDomain:SUSparkleErrorDomain code:SUMissingUpdateError userInfo:[NSDictionary dictionaryWithObject:@"Couldn't find an appropriate update in the downloaded package." forKey:NSLocalizedDescriptionKey]] delegate:delegate];
@@ -145,12 +149,17 @@ static NSString*	sUpdateFolder = nil;
     {
         if(isPackage && isGuided)
         {
-            [[SUGuidedPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+            //[[SUGuidedPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+			[[SUPrivilegedGuidedPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
         }
         else if(isPackage && !isGuided)
         {
             [[SUPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
         }
+		else if(isPackage && isGuided && isSilent)
+		{
+			[[SUPrivilegedGuidedPackageInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];
+		}
         else
         {
             [[SUPlainInstaller class] performInstallationToPath:installationPath fromPath:newAppDownloadPath host:host delegate:delegate synchronously:synchronously versionComparator:comparator];

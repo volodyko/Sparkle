@@ -7,6 +7,8 @@
 
 #import "SUPrivilegedGuidedPackageInstaller.h"
 #import "SUInstalationHelperManager.h"
+#import "SULog.h"
+
 
 @implementation SUPrivilegedGuidedPackageInstaller
 
@@ -17,10 +19,17 @@
 
 + (void)performInstallationToPath:(NSString *)installationPath fromPath:(NSString *)packagePath host:(SUHost *)host delegate:delegate synchronously:(BOOL)synchronously versionComparator:(id <SUVersionComparison>)comparator
 {
+	__block NSString *installerPath = [packagePath stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
+
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSError* error = nil;
-		
-		if([[SUInstalationHelperManager manager] performInstallWithPackagePath:packagePath] != 0)
+		int connectionResult = [[SUInstalationHelperManager manager] establishHelperConnection];
+		if(connectionResult != HELPER_INSTALLED_ERROR_EXIT_CODE)
+		{
+			BOOL res = [[SUInstalationHelperManager manager] performInstallWithPackagePath:installerPath];
+			SULog(@"result is %hhd", res);
+		}
+		else
 		{
 			NSString* errorMessage = [NSString stringWithFormat:@"Sparkle Updater: Script authorization denied."];
 			error = [NSError errorWithDomain:SUSparkleErrorDomain code:SUInstallationError userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];

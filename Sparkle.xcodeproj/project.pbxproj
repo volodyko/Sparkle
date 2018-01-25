@@ -25,6 +25,7 @@
 		0D38533D20176BAC008C762C /* InstallHelperMessage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D38532D20175EA5008C762C /* InstallHelperMessage.c */; };
 		0D3853412019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D38533F2019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h */; };
 		0D3853422019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853402019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m */; };
+		0D3853432019C778008C762C /* SUPrivilegedGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853402019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m */; };
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
@@ -1255,6 +1256,7 @@
 				55C14F7E136F005000649790 /* SUPlainInstallerInternals.m in Sources */,
 				55C14F22136EF86000649790 /* SUStandardVersionComparator.m in Sources */,
 				55C14F20136EF84300649790 /* SUStatusController.m in Sources */,
+				0D3853432019C778008C762C /* SUPrivilegedGuidedPackageInstaller.m in Sources */,
 				55C14F23136EF86700649790 /* SUSystemProfiler.m in Sources */,
 				0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */,
 				55C14F2A136EF9A900649790 /* SUWindowController.m in Sources */,

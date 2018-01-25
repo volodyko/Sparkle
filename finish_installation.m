@@ -6,7 +6,7 @@
 #import "SUStatusController.h"
 #import "SUPlainInstallerInternals.h"
 #import "SULog.h"
-
+#import "SharedConstants.h"
 #include <unistd.h>
 
 #include "SUInstalationHelperManager.h"
@@ -177,7 +177,7 @@
 int main (int argc, const char * argv[])
 {
 	NSString *argv1 = [[NSString alloc] initWithUTF8String:argv[1]];
-	BOOL installHelper = [argv1 isEqualToString:@"install"];
+	BOOL installHelper = [argv1 isEqualToString:kSUInstallHelperParameter];
 	if(!installHelper)
 	{
 		if( argc < 5 || argc > 8)
@@ -214,11 +214,8 @@ int main (int argc, const char * argv[])
 	
 	if(installHelper)
 	{
-		BOOL result = [[SUInstalationHelperManager manager] establishHelperConnection];
-		if(!result)
-		{
-			return EXIT_FAILURE;
-		}
+		int result = [[SUInstalationHelperManager manager] establishHelperConnection];
+		exit(result);
 	}
 	else
 	{

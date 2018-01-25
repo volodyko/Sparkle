@@ -7,4 +7,7 @@
 
 #import "SharedConstants.h"
 
-NSString * const kSUInstallHelperParameter = @"--install-helper";
+NSString * const kSUInstallHelperParameter = @"install-helper";
+
+
+
