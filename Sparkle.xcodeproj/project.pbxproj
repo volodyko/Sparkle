@@ -23,6 +23,8 @@
 		0D38533B20176B84008C762C /* SUInstalationHelperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17D2EA2016109600BC7C2D /* SUInstalationHelperManager.m */; };
 		0D38533C20176B97008C762C /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D17D2E6201609C500BC7C2D /* ServiceManagement.framework */; };
 		0D38533D20176BAC008C762C /* InstallHelperMessage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D38532D20175EA5008C762C /* InstallHelperMessage.c */; };
+		0D3853412019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D38533F2019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h */; };
+		0D3853422019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3853402019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m */; };
 		0D52BDB01F17968C009A9A05 /* SUGuidedPackageInstaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */; };
 		0D52BDBE1F179C46009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
 		0D52BDC61F1D1BEC009A9A05 /* SUGuidedPackageInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */; };
@@ -238,6 +240,8 @@
 		0D38532E20175EA5008C762C /* InstallHelperMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallHelperMessage.h; sourceTree = "<group>"; };
 		0D38533320176451008C762C /* SUInatllationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUInatllationHelper.h; sourceTree = "<group>"; };
 		0D38533420176451008C762C /* SUInatllationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUInatllationHelper.m; sourceTree = "<group>"; };
+		0D38533F2019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUPrivilegedGuidedPackageInstaller.h; sourceTree = "<group>"; };
+		0D3853402019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUPrivilegedGuidedPackageInstaller.m; sourceTree = "<group>"; };
 		0D52BDAE1F17968C009A9A05 /* SUGuidedPackageInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUGuidedPackageInstaller.h; sourceTree = "<group>"; };
 		0D52BDAF1F17968C009A9A05 /* SUGuidedPackageInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUGuidedPackageInstaller.m; sourceTree = "<group>"; };
 		0DAE15772015FD2F00FFABF7 /* com.zoomsupport.InstallationHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.zoomsupport.InstallationHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -746,6 +750,8 @@
 				618FA5040DAE8AB80026945C /* SUPlainInstaller.m */,
 				6129984309C9E2DA00B7442F /* SUPlainInstallerInternals.h */,
 				61B5F8E509C4CE3C00B25A18 /* SUPlainInstallerInternals.m */,
+				0D38533F2019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h */,
+				0D3853402019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m */,
 			);
 			name = Installation;
 			sourceTree = "<group>";
@@ -892,6 +898,7 @@
 				610134730DD250470049ACDF /* SUUpdateDriver.h in Headers */,
 				612DCBAF0D488BC60015DBEA /* SUUpdatePermissionPrompt.h in Headers */,
 				61B5F8ED09C4CE3C00B25A18 /* SUUpdater.h in Headers */,
+				0D3853412019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.h in Headers */,
 				6158A1C5137904B300487EC1 /* SUUpdater_Private.h in Headers */,
 				61A354550DF113C70076ECB1 /* SUUserInitiatedUpdateDriver.h in Headers */,
 				61A2259E0D1C495D00430CCD /* SUVersionComparisonProtocol.h in Headers */,
@@ -1313,6 +1320,7 @@
 				61A225A50D1C4AC000430CCD /* SUStandardVersionComparator.m in Sources */,
 				6196CFFA09C72149000DC222 /* SUStatusController.m in Sources */,
 				61A2279D0D1CEE7600430CCD /* SUSystemProfiler.m in Sources */,
+				0D3853422019B27C008C762C /* SUPrivilegedGuidedPackageInstaller.m in Sources */,
 				61B93A3D0DD02D7000DCD2F8 /* SUUIBasedUpdateDriver.m in Sources */,
 				61299A8E09CA790200B7442F /* SUUnarchiver.m in Sources */,
 				6102FE5C0E08C7EC00F85D09 /* SUUnarchiver_Private.m in Sources */,

@@ -162,7 +162,7 @@ int respondToRequest() {
 
 int performInstall(unsigned char *installerPath)
 {
-	char command[100];
+	char command[252];
 	sprintf(command,"/usr/sbin/installer -pkg %s -target / ", installerPath);
 	return system(command);
 }

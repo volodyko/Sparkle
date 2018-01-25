@@ -145,9 +145,7 @@ static NSString *const kRAHelperPrompt = @"Please enter your password to install
 	return result;
 }
 
-- (nullable NSString *)performTaskWithLaunchPath:(nullable NSString *)aPath
-									   arguments:(nonnull NSArray *)anArguments
-										   error:(NSError * __autoreleasing _Nonnull * _Nullable)anError
+- (nullable BOOL *)performInstallWithPackagePath:(nullable NSString *)aPath
 {
 	struct SUHelperMessage messageOut;
 	initMessage(messageOut, SUM_Install);

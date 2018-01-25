@@ -11,9 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SUInstallationHelper <NSObject>
 
-- (nullable NSString *)performTaskWithLaunchPath:(nullable NSString *)aPath
-									   arguments:(nonnull NSArray *)anArguments
-										   error:(NSError * __autoreleasing _Nonnull * _Nullable)anError;
+- (nullable BOOL *)performInstallWithPackagePath:(nullable NSString *)aPath;
 
 @end
 
